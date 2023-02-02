@@ -19,10 +19,31 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .tsx",
+    "lint:fix": "eslint --fix ."
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "keyword-spacing": [
+        "error",
+        {
+          "before": true,
+          "after": true
+        }
+      ],
+      "no-extra-semi": "error",
+      "semi": [
+        "error",
+        "always"
+      ],
+      "semi-style": [
+        "error",
+        "last"
+      ],
+      "space-before-blocks": "error"
+    }
   },
   "browserslist": {
     "production": [

@@ -7,6 +7,13 @@ function delay(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(() => resolve(), time));
 }
 
+export type Person = {
+  id: string;
+  jobTitle: string;
+  emailAddress: string;
+  firstNameLastName: string;
+}
+
 export default async function apiData() {
   await delay(1000);
   if (Math.random() > 0.7) {

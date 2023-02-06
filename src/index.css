@@ -29,10 +29,17 @@
   /* 32px */
 }
 
-
+/* Normalization */
 * {
   box-sizing: border-box;
 }
+
+p {
+  margin: 0;
+  line-height: 1;
+}
+
+/* Style */
 
 body {
   margin: 0;

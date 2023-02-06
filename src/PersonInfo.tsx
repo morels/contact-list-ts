@@ -15,19 +15,19 @@ type Props = {
 function PersonInfo(props: Props) {
   const { data } = props;
   return (
-    <div
+    <article
       className={clsx("person-info", props.selected && "selected")}
       onClick={props.onClick}
     >
       <div className="head">
         <img src={logo} className="avatar" alt="logo" />
         <div className="wrapper">
-          <div className="firstNameLastName text-ellipsible">{data.firstNameLastName}</div>
-          <div className="jobTitle text-ellipsible">{data.jobTitle}</div>
+          <p className="firstNameLastName text-ellipsible">{data.firstNameLastName}</p>
+          <p className="jobTitle text-ellipsible">{data.jobTitle}</p>
         </div>
       </div>
-      <div className="emailAddress">{data.emailAddress}</div>
-    </div>
+      <p className="emailAddress">{data.emailAddress}</p>
+    </article>
   );
 }
 

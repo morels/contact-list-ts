@@ -66,6 +66,10 @@ code {
   cursor: pointer;
 }
 
+.person-info.selected {
+  border: 2px solid hsl(var(--red));
+}
+
 .person-info:hover {
   border: 2px solid hsl(var(--pink));
 }

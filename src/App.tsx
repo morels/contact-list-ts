@@ -5,6 +5,7 @@ import PersonInfo from "./PersonInfo";
 
 function App() {
   const [data, setData] = React.useState<Person[]>([]);
+  const [selected, setSelected] = React.useState<Record<Person['id'], boolean>>({});
   const [isLoading, setIsLoading] = useState(false);
   const [dummy, setDummy] = useState(0);
   const [loadLabel, setLoadLabel] = useState("Load more");
@@ -17,7 +18,6 @@ function App() {
       isMounted.current = false;
     };
   }, []);
-
 
    useEffect(() => {
     async function callback() {
@@ -40,18 +40,31 @@ function App() {
     void callback();
   }, [dummy]);
   
+  useEffect(()=>{
+    const sortBySelected = ({id: idA}:Person, {id: idB}:Person) =>+Boolean(selected[idB])  - +Boolean(selected[idA]);
+
+    setData(oldData =>[...oldData].sort(sortBySelected));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[selected]);
+
   const handleLoad = () => {
     setDummy(old => old+1);
   };
 
+  const handleSelect = (id:Person['id']) => () => setSelected({...selected, [id]: selected[id] ? false : true });
+
   return (
     <main className="App">
-      <aside className="selected">Selected contacts: 0</aside>
+      <aside className="selected">Selected contacts: {Object.values(selected).filter(Boolean).length}</aside>
       <section className="list">
         {data.map((personInfo) => (
-            <PersonInfo key={personInfo.id} data={personInfo} />
-          )
-        )}
+          <PersonInfo 
+            key={personInfo.id}
+            data={personInfo}
+            onClick={handleSelect(personInfo.id)}
+            selected={selected[personInfo.id]} 
+          />
+        ))}
       {!isLoading && <Loadmore onClick={handleLoad} label={loadLabel} loading={isLoading}/>}
       {isLoading && <div className="loading">Loading...</div>}
       </section>

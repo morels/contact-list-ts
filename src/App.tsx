@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import apiData, { Person } from "./api";
-import { Loadmore } from "./Loadmore";
+import { Loader } from "./Loader";
 import PersonInfo from "./PersonInfo";
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
             selected={selected[personInfo.id]} 
           />
         ))}
-      {!isLoading && <Loadmore onClick={handleLoad} label={loadLabel} loading={isLoading}/>}
+        {!isLoading && <Loader className="loader" onClick={handleLoad} label={loadLabel} loading={isLoading}/>}
       {isLoading && <div className="loading">Loading...</div>}
       </section>
     </main>

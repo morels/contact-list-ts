@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { Loadmore } from './Loadmore';
+import { Loadmore } from './Loader';
 
 describe('Loadmore', () => {
   it('renders the label when not loading', () => {

@@ -54,21 +54,25 @@ function App() {
   const handleSelect = (id:Person['id']) => () => setSelected({...selected, [id]: selected[id] ? false : true });
 
   return (
-    <main className="App">
-      <aside className="selected">Selected contacts: {Object.values(selected).filter(Boolean).length}</aside>
-      <section className="list">
-        {data.map((personInfo) => (
-          <PersonInfo 
-            key={personInfo.id}
-            data={personInfo}
-            onClick={handleSelect(personInfo.id)}
-            selected={selected[personInfo.id]} 
-          />
-        ))}
-        {!isLoading && <Loader className="loader" onClick={handleLoad} label={loadLabel} loading={isLoading}/>}
-      {isLoading && <div className="loading">Loading...</div>}
-      </section>
-    </main>
+    <>
+      <main className="App">
+        <section className="list">
+          <div className="list-header">Selected contacts: {Object.values(selected).filter(Boolean).length}</div>
+          <div className="list-content">
+            {data.map((personInfo) => (
+              <PersonInfo 
+              key={personInfo.id}
+              data={personInfo}
+              onClick={handleSelect(personInfo.id)}
+              selected={selected[personInfo.id]} 
+              />
+            ))}
+            {!isLoading && <Loader className="loader" onClick={handleLoad} label={loadLabel} loading={isLoading}/>}
+            {isLoading && <div className="loading">Loading...</div>}
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 

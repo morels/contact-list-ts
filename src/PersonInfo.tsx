@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import logo from './avatar.svg';
 
 type Props = {
   data: {
@@ -18,8 +19,13 @@ function PersonInfo(props: Props) {
       className={clsx("person-info", props.selected && "selected")}
       onClick={props.onClick}
     >
-      <div className="firstNameLastName">{data.firstNameLastName}</div>
-      <div className="jobTitle">{data.jobTitle}</div>
+      <div className="head">
+        <img src={logo} className="avatar" alt="logo" />
+        <div className="wrapper">
+          <div className="firstNameLastName">{data.firstNameLastName}</div>
+          <div className="jobTitle">{data.jobTitle}</div>
+        </div>
+      </div>
       <div className="emailAddress">{data.emailAddress}</div>
     </div>
   );

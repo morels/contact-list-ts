@@ -5,6 +5,6 @@ type Props = {
   loading: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Loader = ({onClick, label, loading}:Props) => {
-  return <button onClick={onClick} disabled={loading}>{loading ? "Loading..." : label}</button>;
+export const Loader = ({onClick, label, loading, className}:Props) => {
+  return <button className={className} onClick={onClick} disabled={loading}>{loading ? "Loading..." : label}</button>;
 };

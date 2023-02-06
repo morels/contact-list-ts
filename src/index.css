@@ -42,16 +42,27 @@ code {
 
 .App {
   display: flex;
+  flex-direction: row;
+  max-width: 40rem;
   justify-content: center;
   align-items: space-between;
-  margin: var(--space-2) 0;
+  margin: var(--space-2) auto;
 }
 
-.selected {
+.list-content {
+  margin: 0 var(--space);
+}
+
+.list-header {
   color: hsl(var(--black-80));
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-bold);
-  margin: var(--space) var(--space-2) 0 0;
+  padding: var(--space);
+  text-align: center;
+  position: sticky;
+  top: 0;
+
+  background: hsl(var(--black-10));
 }
 
 .person-info {
@@ -59,11 +70,15 @@ code {
   height: 100px;
   justify-content: space-between;
   flex-direction: column;
-  padding: var(--space-3);
+  padding: var(--space-2);
   box-shadow: 0px 1px 2px 0px hsl(var(--black-20));
-  margin: var(--space) 0;
   background: hsl(var(--white));
   cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.list-content>*+* {
+  margin-top: var(--space);
 }
 
 .person-info.selected {
@@ -74,22 +89,48 @@ code {
   border: 2px solid hsl(var(--pink));
 }
 
+.person-info .head {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.avatar {
+  height: 3rem;
+  width: 3rem;
+  pointer-events: none;
+}
+
+.person-info .head .wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .firstNameLastName {
-  padding: 0 0 var(--space);
   color: hsl(var(--black-80));
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-semilarge);
   font-weight: var(--font-weight-bold)
 }
 
 .jobTitle {
-  padding: 0 0 var(--space-2);
   color: hsl(var(--red));
-  font-size: var(--font-size-semilarge);
-  font-weight: var(--font-weight-regular)
+  text-transform: uppercase;
 }
 
 .emailAddress {
   color: hsl(var(--black-60));
   font-size: var(--font-size-small);
   line-height: 1.8em;
+  text-align: center;
+}
+
+.loader {
+  width: 100%;
+}
+
+.loader:not([disabled]) {
+  cursor: pointer;
 }

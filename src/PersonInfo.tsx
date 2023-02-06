@@ -22,8 +22,8 @@ function PersonInfo(props: Props) {
       <div className="head">
         <img src={logo} className="avatar" alt="logo" />
         <div className="wrapper">
-          <div className="firstNameLastName">{data.firstNameLastName}</div>
-          <div className="jobTitle">{data.jobTitle}</div>
+          <div className="firstNameLastName text-ellipsible">{data.firstNameLastName}</div>
+          <div className="jobTitle text-ellipsible">{data.jobTitle}</div>
         </div>
       </div>
       <div className="emailAddress">{data.emailAddress}</div>

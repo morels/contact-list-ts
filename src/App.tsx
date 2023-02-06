@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import apiData, { Person } from "./api";
 import { Loader } from "./Loader";
 import PersonInfo from "./PersonInfo";
+import PersonInfoSkeleton from "./PersonInfo.skeleton";
 
 function App() {
   const [data, setData] = React.useState<Person[]>([]);
@@ -68,7 +69,12 @@ function App() {
               />
             ))}
             {!isLoading && <Loader className="loader" onClick={handleLoad} label={loadLabel} loading={isLoading}/>}
-            {isLoading && <div className="loading">Loading...</div>}
+            {isLoading && <>
+                <PersonInfoSkeleton />
+                <PersonInfoSkeleton />
+                <PersonInfoSkeleton />
+              </>
+            }
           </div>
         </section>
       </main>
